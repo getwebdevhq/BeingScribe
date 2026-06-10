@@ -1,111 +1,150 @@
 /* ═══════════════════════════════════════════════════════════════
    BeingScribe — Social-First Creative Studio
-   Interactions, Parallax, Magnetic Buttons
+   Interactions: Parallax, Magnetic, Scroll Reveal, Mobile Menu
+   Apple-inspired: purposeful, smooth, responsive-aware
    ═══════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
+    // ── Feature detection ─────────────────────────────────────
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // ── Smooth Scroll for Anchor Links ────────────────────────
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const navHeight = document.querySelector('.nav').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth'
                 });
             }
         });
     });
 
-    // ── Magnetic Buttons ──────────────────────────────────────
-    const magneticElements = document.querySelectorAll('.magnetic');
-    
-    magneticElements.forEach((el) => {
-        el.addEventListener('mousemove', (e) => {
-            const position = el.getBoundingClientRect();
-            const x = e.clientX - position.left - position.width / 2;
-            const y = e.clientY - position.top - position.height / 2;
-            
-            // Subtle movement
-            el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-        });
+    // ── Magnetic Buttons (desktop only) ───────────────────────
+    if (!isTouchDevice && !prefersReducedMotion) {
+        const magneticElements = document.querySelectorAll('.magnetic');
 
-        el.addEventListener('mouseout', () => {
-            el.style.transform = 'translate(0px, 0px)';
-            // Adding a transition for the snap back
-            el.style.transition = 'transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)';
-        });
-        
-        el.addEventListener('mouseenter', () => {
-            // Remove transition when hovering so it follows mouse instantly
-            el.style.transition = 'none';
-        });
-    });
+        magneticElements.forEach((el) => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
 
-    // ── Parallax Scrolling ────────────────────────────────────
-    const parallaxElements = document.querySelectorAll('.parallax');
-    
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        
-        parallaxElements.forEach((el) => {
-            const speed = el.dataset.speed || 0.1;
-            const yPos = -(scrolled * speed);
-            
-            // Only apply parallax if element is in viewport roughly
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                el.style.transform = `translateY(${yPos}px)`;
+                el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+            });
+
+            el.addEventListener('mouseleave', () => {
+                el.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                el.style.transform = 'translate(0px, 0px)';
+            });
+
+            el.addEventListener('mouseenter', () => {
+                el.style.transition = 'none';
+            });
+        });
+    }
+
+    // ── Parallax Scrolling (desktop only, reduced motion aware)
+    if (!isTouchDevice && !prefersReducedMotion) {
+        const parallaxElements = document.querySelectorAll('.parallax');
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrolled = window.scrollY;
+
+                    parallaxElements.forEach((el) => {
+                        const speed = parseFloat(el.dataset.speed) || 0.1;
+                        const rect = el.getBoundingClientRect();
+
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            el.style.transform = `translateY(${-(scrolled * speed)}px)`;
+                        }
+                    });
+
+                    ticking = false;
+                });
+                ticking = true;
             }
-        });
-    });
+        }, { passive: true });
+    }
 
     // ── Scroll Reveal Animations ──────────────────────────────
-    // Add reveal class to elements we want to animate in
-    const elementsToReveal = document.querySelectorAll(
-        '.service-card, .project-card, .stat-bubble, .pin-card, .value-card, .about-text'
-    );
-    
-    elementsToReveal.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(40px)';
-        el.style.transition = 'opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1)';
-    });
+    if (!prefersReducedMotion) {
+        const elementsToReveal = document.querySelectorAll(
+            '.service-card, .project-card, .stat-item, .pin-card, .value-card, .about-text, .about-visual, .portfolio-header, .footer-top, .newsletter-card'
+        );
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                revealObserver.unobserve(entry.target);
-            }
+        elementsToReveal.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1) ${(index % 4) * 0.08}s, transform 0.7s cubic-bezier(0.25, 1, 0.5, 1) ${(index % 4) * 0.08}s`;
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
 
-    elementsToReveal.forEach(el => revealObserver.observe(el));
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        });
 
-    // ── Navigation Background on Scroll ───────────────────────
+        elementsToReveal.forEach(el => revealObserver.observe(el));
+    }
+
+    // ── Mobile Menu Toggle ────────────────────────────────────
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-menu .btn');
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+            const isActive = hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
+    // ── Navigation — Apple-style frosted glass on scroll ──────
     const nav = document.querySelector('.nav');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.style.backgroundColor = 'rgba(247, 244, 240, 0.9)';
-            nav.style.backdropFilter = 'blur(10px)';
-            nav.style.mixBlendMode = 'normal';
-            nav.style.color = 'var(--black)';
+    let lastScrollY = 0;
+
+    const handleNavScroll = () => {
+        const scrollY = window.scrollY;
+
+        if (scrollY > 50) {
+            nav.classList.add('scrolled');
         } else {
-            nav.style.backgroundColor = 'transparent';
-            nav.style.backdropFilter = 'none';
-            nav.style.mixBlendMode = 'difference';
-            nav.style.color = 'var(--white)';
+            nav.classList.remove('scrolled');
         }
-    });
+
+        lastScrollY = scrollY;
+    };
+
+    window.addEventListener('scroll', handleNavScroll, { passive: true });
+    handleNavScroll(); // Run once on load
 });
