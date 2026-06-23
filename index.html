@@ -10,17 +10,19 @@
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Pinyon+Script&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="#" class="logo">Beingscribe</a>
+            <a href="#" class="logo brand-logo-img">
+                <img src="assets/images/logo.png?v=2" alt="Being Scribe Logo" class="logo-img">
+            </a>
             
             <div class="nav-links desktop-nav">
                 <a href="#work">Work</a>
@@ -55,16 +57,17 @@
         
         <div class="hero-container">
             <div class="hero-content">
+                <div class="hero-kicker">WE MAKE SOCIALS WITH PURPOSE</div>
                 <h1 class="hero-title staggered-text">
-                    <span class="line line-1">SOCIAL</span>
-                    <span class="line line-2">WITH <span class="highlight-coral">PURPOSE</span></span>
+                    <span class="line line-1">WE MAKE BRANDS</span>
+                    <span class="line line-2">IMPOSSIBLE <span class="highlight-coral">TO IGNORE</span></span>
                 </h1>
                 
-                <p class="hero-subline">Strategy, content and websites that help brands get noticed.</p>
+                <p class="hero-subline">Content, strategy, planning, websites & branding.<br>For businesses that want more than just another agency.</p>
                 
                 <div class="hero-actions">
-                    <a href="#work" class="btn btn-black btn-lg magnetic">View Work</a>
-                    <a href="#contact" class="btn btn-outline btn-lg magnetic">Book A Call</a>
+                    <a href="#work" class="btn btn-black btn-lg magnetic">View Our Work</a>
+                    <a href="#contact" class="btn btn-outline btn-lg magnetic">Get In Touch</a>
                 </div>
             </div>
             
@@ -107,41 +110,40 @@
     <section class="services" id="services">
         <div class="huge-bg-text">WHAT WE DO</div>
         <div class="section-container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Our Services</h2>
             <div class="services-grid">
                 <!-- Card 1 -->
-                <div class="service-card card-pink offset-1">
-                    <h3>Social Media Management</h3>
-                    <p>End-to-end community building and feed curation that turns followers into super-fans.</p>
-                    <div class="card-footer">
-                        <span class="tag">Strategy</span>
-                        <span class="tag">Posting</span>
-                    </div>
+                <div class="service-card">
+                    <div class="service-meta">Instagram, Facebook, LinkedIn & Threads</div>
+                    <h3>Social Media Management & Marketing</h3>
+                    <p>Strategy, content, publishing, community management and optimization.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="service-card card-lavender offset-2">
-                    <h3>Content Strategy</h3>
-                    <p>Data-driven playbooks that define your voice, pillars, and path to conversion.</p>
-                    <div class="card-footer">
-                        <span class="tag">Audits</span>
-                        <span class="tag">Playbooks</span>
-                    </div>
+                <div class="service-card">
+                    <h3>Content Creation</h3>
+                    <p>Photos, videos, graphics, reels and creative campaigns designed for engagement and growth.</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="service-card card-lime offset-3">
-                    <h3>Content Creation</h3>
-                    <p>High-end editorial shoots, raw UGC-style video, and punchy copywriting.</p>
-                    <div class="card-footer">
-                        <span class="tag">Video</span>
-                        <span class="tag">Design</span>
-                    </div>
+                <div class="service-card">
+                    <h3>Branding</h3>
+                    <p>Business cards, flyers, posters, brand assets and visual identity systems that keep your brand consistent everywhere.</p>
                 </div>
                 <!-- Card 4 -->
-                <div class="service-card card-pink offset-4">
+                <div class="service-card">
                     <h3>Website Development</h3>
-                    <p>Premium digital homes for your brand that look gorgeous and convert flawlessly.</p>
-                    <div class="card-footer">
-                        <span class="tag">UI/UX</span>
-                        <span class="tag">Webflow</span>
+                    <p>Fast, elegant and conversion-focused websites built to represent your brand online.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="service-card">
+                    <h3>Content Writing & Copywriting</h3>
+                    <p>Words that tell your story, sell your vision, and spark action.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="service-card service-card-cta">
+                    <h3>Content Strategy & SEO</h3>
+                    <p>Content calendars, content planning, copywriting, blogs, captions and SEO optimization designed to help your audience discover you.<br><span class="highlight-note">Need only a content calendar? We do that too.</span></p>
+                    <div class="card-action" style="margin-top: auto;">
+                        <a href="#contact" class="btn btn-black magnetic">Get a Content Plan ↗</a>
                     </div>
                 </div>
             </div>
@@ -220,45 +222,93 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="section-container about-spread">
-            <div class="about-visual">
-                <div class="image-wrapper">
-                    <img src="assets/images/taskeen-portrait.png" alt="Tas" class="about-portrait">
-                    <div class="deco-star">✦</div>
+            <div class="about-visual brand-pillars-grid">
+                <div class="pillar-card pillar-1">
+                    <span class="pillar-num">01</span>
+                    <span class="pillar-text">Content that gets remembered</span>
+                </div>
+                <div class="pillar-card pillar-2">
+                    <span class="pillar-num">02</span>
+                    <span class="pillar-text">Social media that feels human</span>
+                </div>
+                <div class="pillar-card pillar-3">
+                    <span class="pillar-num">03</span>
+                    <span class="pillar-text">Websites that convert</span>
+                </div>
+                <div class="pillar-card pillar-4">
+                    <span class="pillar-num">04</span>
+                    <span class="pillar-text">Branding that stays consistent</span>
+                </div>
+                <div class="pillar-card pillar-5">
+                    <span class="pillar-num">05</span>
+                    <span class="pillar-text">Words that sell</span>
                 </div>
             </div>
+            
             <div class="about-text">
-                <h2 class="huge-heading">HEY, I'M TAS.</h2>
-                <p class="lead-copy">I help brands create content that actually connects with people.</p>
-                <p>Gone are the days of boring corporate social media. Today's consumers crave authenticity, aesthetic brilliance, and genuine engagement. That's where we come in.</p>
-                <a href="#contact" class="link-arrow">Read the full story ↗</a>
+                <div class="about-kicker">Not another agency.</div>
+                <h2 class="huge-heading">A creative growth partner.</h2>
+                <p class="lead-copy">Because your brand deserves more than random posting</p>
+                <p class="about-p">Most brands don’t need twenty different marketing services. <strong>They need clarity.</strong></p>
+                <p class="about-p">At Beingscribe, we focus on the things that actually shape a brand’s presence:</p>
+                <a href="#services" class="btn btn-black magnetic" style="margin-top: 16px;">Explore Services ↗</a>
             </div>
         </div>
     </section>
 
-    <!-- Blog Preview Section -->
-    <section class="blog-preview">
+    <!-- Tips Section -->
+    <section class="blog-preview" id="tips">
         <div class="section-container">
-            <h2 class="section-title">THINGS I WISH MORE BRANDS KNEW</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">THINGS WE WISH MORE BRANDS KNEW</h2>
             
-            <div class="pinterest-grid">
-                <div class="pin-card bg-lavender">
+            <div class="tips-grid">
+                <!-- Card 1 -->
+                <div class="pin-card card-brand-dark">
                     <div class="pin-content">
-                        <span class="date">Oct 12</span>
-                        <h3>Stop posting graphics, start posting faces.</h3>
+                        <span class="tip-number">01 . Strategy</span>
+                        <h3>Going viral is not a strategy.</h3>
+                        <p class="tip-desc">Consistency builds brands; virality is a bonus.</p>
                     </div>
                 </div>
-                <div class="pin-card bg-lime pin-tall">
+                <!-- Card 2 -->
+                <div class="pin-card card-brand-light">
                     <div class="pin-content">
-                        <span class="date">Sep 28</span>
-                        <h3>Why your aesthetic is holding your engagement back.</h3>
+                        <span class="tip-number">02 . Growth</span>
+                        <h3>More posts don’t always mean more growth.</h3>
+                        <p class="tip-desc">The ‘right content’ beats ‘more content’.</p>
                     </div>
                 </div>
-                <div class="pin-card bg-pink">
+                <!-- Card 3 -->
+                <div class="pin-card card-brand-pink">
                     <div class="pin-content">
-                        <span class="date">Sep 15</span>
-                        <h3>The anatomy of a viral reel (it's not what you think).</h3>
+                        <span class="tip-number">03 . Website</span>
+                        <h3>A website isn’t a brochure.</h3>
+                        <p class="tip-desc">It should work as your best salesperson, 24/7.</p>
                     </div>
                 </div>
+                <!-- Card 4 -->
+                <div class="pin-card card-brand-light">
+                    <div class="pin-content">
+                        <span class="tip-number">04 . Branding</span>
+                        <h3>Branding is more than a logo.</h3>
+                        <p class="tip-desc">It’s how people remember, trust, and choose you.</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="pin-card card-brand-dark">
+                    <div class="pin-content">
+                        <span class="tip-number">05 . Content</span>
+                        <h3>Great content doesn’t just look good.</h3>
+                        <p class="tip-desc">It should inform, engage, and convert.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Links -->
+            <div class="tips-actions">
+                <a href="#contact" class="btn btn-outline magnetic">Growth Strategy ↗</a>
+                <a href="#work" class="btn btn-outline magnetic">Featured Projects ↗</a>
+                <a href="#contact" class="btn btn-outline magnetic">Book A Consultation ↗</a>
             </div>
         </div>
     </section>
@@ -274,44 +324,30 @@
         <div class="section-container footer-container">
             <div class="footer-top">
                 <div class="footer-branding">
-                    <h2 class="footer-headline">Let's grow through content.</h2>
-                    <p>Beingscribe helps brands create content that earns attention, builds community, and drives real growth.</p>
-                    <a href="mailto:hello@beingscribe.com" class="btn btn-black btn-lg magnetic">Book a call ↗</a>
+                    <div class="footer-logo-img">
+                        <img src="assets/images/logo.png?v=2" alt="Being Scribe Logo" class="logo-img">
+                    </div>
+                    <h2 class="footer-headline">Your brand already has a story.<br>Let’s make sure people actually see it.</h2>
+                    <p class="footer-subline" style="font-size: clamp(1rem, 1.3vw, 1.25rem); font-weight: 500; max-width: 500px; margin-bottom: 24px; line-height: 1.5; color: var(--grey-600);">Because we are thinkers, strategists, and creators; not just people who schedule posts.</p>
+                    <a href="mailto:hello@beingscribe.com" class="btn btn-black btn-lg magnetic">Book A Call ↗</a>
                 </div>
                 
-                <div class="footer-links">
-                    <div class="link-col">
-                        <h4>Navigation</h4>
-                        <a href="#">Home</a>
-                        <a href="#work">Projects</a>
-                        <a href="#services">Services</a>
-                        <a href="#about">About</a>
+                <div class="footer-social-wrap">
+                    <h4>Follow Us</h4>
+                    <div class="social-links footer-socials-grid">
+                        <a href="#" class="magnetic">IG</a>
+                        <a href="#" class="magnetic">Threads</a>
+                        <a href="#" class="magnetic">LI</a>
+                        <a href="#" class="magnetic">WA</a>
+                        <a href="mailto:hello@beingscribe.com" class="magnetic" style="font-size: 0.75rem;">Email</a>
                     </div>
-                    <div class="link-col">
-                        <h4>Follow Us</h4>
-                        <div class="social-links">
-                            <a href="#">IG</a>
-                            <a href="#">TT</a>
-                            <a href="#">LI</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-middle">
-                <div class="newsletter-card">
-                    <h3>Newsletter</h3>
-                    <p>Sign up for the latest motion design & studio news</p>
-                    <form class="subscribe-form">
-                        <input type="email" placeholder="Email Address" required>
-                        <button type="submit" class="btn btn-black magnetic">Submit ↗</button>
-                    </form>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="huge-logo">BEINGSCRIBE</div>
-                <div class="copyright">
+                <div class="footer-watermark-sub">Content • Branding • Websites • Strategy</div>
+                <div class="copyright" style="margin-top: 24px;">
                     <span>© 2026 BEINGSCRIBE. ALL RIGHTS RESERVED.</span>
                     <div class="legal">
                         <a href="#">Privacy Policy</a>

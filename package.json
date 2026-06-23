@@ -1,0 +1,12 @@
+{
+  "name": "beingscribe",
+  "version": "1.0.0",
+  "description": "Being Scribe creative studio website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
