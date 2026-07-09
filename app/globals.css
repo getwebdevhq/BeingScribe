@@ -50,10 +50,6 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
-}
-
-html, body {
-    overflow-x: hidden;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -66,6 +62,10 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 img {
@@ -111,6 +111,20 @@ h1, h2, h3, h4, .font-serif {
 .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+.parallax {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 /* Delay Utlities */
@@ -209,6 +223,7 @@ h1, h2, h3, h4, .font-serif {
 
 .nav.scrolled {
     background-color: rgba(244, 248, 249, 0.9);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     padding: 18px 0;
     box-shadow: 0 4px 30px rgba(10, 84, 108, 0.04);
@@ -308,6 +323,7 @@ h1, h2, h3, h4, .font-serif {
     left: 0;
     right: 0;
     height: 100vh;
+    height: 100dvh;
     background-color: var(--deep-teal);
     z-index: 1001;
     display: flex;
@@ -455,6 +471,9 @@ h1, h2, h3, h4, .font-serif {
     overflow: hidden;
     border-radius: var(--radius-arch); /* Arch shape for hero image */
     box-shadow: 0 30px 80px rgba(10, 84, 108, 0.08);
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .hero-portrait {
@@ -533,6 +552,9 @@ h1, h2, h3, h4, .font-serif {
     overflow: hidden;
     height: clamp(400px, 45vw, 620px);
     box-shadow: 0 25px 60px rgba(10, 84, 108, 0.05);
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .split-visual img {
@@ -593,6 +615,9 @@ h1, h2, h3, h4, .font-serif {
     overflow: hidden;
     border-radius: var(--radius-md);
     position: relative;
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .editorial-image-wrapper img {
@@ -643,6 +668,9 @@ h1, h2, h3, h4, .font-serif {
     border-radius: var(--radius-arch);
     overflow: hidden;
     position: relative;
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .services-visual-arch img {
@@ -756,6 +784,9 @@ h1, h2, h3, h4, .font-serif {
     border-radius: var(--radius-md);
     position: relative;
     box-shadow: 0 15px 45px rgba(10, 84, 108, 0.03);
+    isolation: isolate;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .portfolio-img {
