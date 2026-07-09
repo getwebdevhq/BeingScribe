@@ -65,23 +65,40 @@ export default function SiteInteractions() {
       );
     }
 
-    // ── Parallax Scrolling (desktop only, reduced motion aware)
+    // ── Parallax Scrolling (desktop only, reduced motion aware, reflow optimized)
     if (!isTouchDevice && !prefersReducedMotion) {
       const parallaxElements = document.querySelectorAll('.parallax');
+      const visibleParallaxElements = new Set();
       let ticking = false;
+
+      const parallaxObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              visibleParallaxElements.add(entry.target);
+            } else {
+              visibleParallaxElements.delete(entry.target);
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: '100px 0px 100px 0px',
+          threshold: 0,
+        }
+      );
+
+      parallaxElements.forEach((el) => parallaxObserver.observe(el));
+      cleanupFns.push(() => parallaxObserver.disconnect());
 
       const handleParallaxScroll = () => {
         if (!ticking) {
           requestAnimationFrame(() => {
             const scrolled = window.scrollY;
 
-            parallaxElements.forEach((el) => {
+            visibleParallaxElements.forEach((el) => {
               const speed = parseFloat(el.dataset.speed) || 0.1;
-              const rect = el.getBoundingClientRect();
-
-              if (rect.top < window.innerHeight && rect.bottom > 0) {
-                el.style.transform = `translateY(${-(scrolled * speed)}px)`;
-              }
+              el.style.transform = `translateY(${-(scrolled * speed)}px)`;
             });
 
             ticking = false;

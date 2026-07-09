@@ -17,7 +17,7 @@
 
     /* Typography */
     --font-hero: "the-seasons", "Playfair Display", serif;
-    --font-body: 'Poppins', 'Inter', sans-serif;
+    --font-body: var(--font-body-next, 'Poppins', 'Inter', sans-serif);
 
     /* Spacing & Layout */
     --container-max: 1300px;

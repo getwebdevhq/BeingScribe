@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function ValueProp() {
   return (
     <section className="dual-blocks" id="why-us">
@@ -10,7 +12,13 @@ export default function ValueProp() {
           {/* Business Side */}
           <div className="editorial-card reveal">
             <div className="editorial-image-wrapper">
-              <img src="/images/feed_mockup.png" alt="Business social media strategy" />
+              <Image
+                src="/images/feed_mockup.webp"
+                alt="Business social media strategy"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+              />
             </div>
             <h3>Business World</h3>
             <p>
@@ -21,7 +29,13 @@ export default function ValueProp() {
           {/* Creator Side */}
           <div className="editorial-card reveal delay-2">
             <div className="editorial-image-wrapper">
-              <img src="/images/muse_working.png" alt="Creative lifestyle content" />
+              <Image
+                src="/images/muse_working.webp"
+                alt="Creative lifestyle content"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+              />
             </div>
             <h3>Creator World</h3>
             <p>

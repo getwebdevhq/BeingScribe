@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Hero() {
   return (
     <section className="hero">
@@ -26,8 +28,15 @@ export default function Hero() {
         </div>
 
         <div className="hero-visuals reveal delay-2">
-          <div className="portrait-container">
-            <img src="/images/muse_working.png" alt="BeingScribe Muse" className="hero-portrait" />
+          <div className="portrait-container" style={{ position: 'relative' }}>
+            <Image
+              src="/images/muse_working.webp"
+              alt="BeingScribe Muse"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="hero-portrait"
+              priority
+            />
           </div>
           
           <div className="floating-card social-card-1 parallax" data-speed="0.08">
@@ -35,7 +44,13 @@ export default function Hero() {
           </div>
           
           <div className="floating-card social-card-2 parallax" data-speed="-0.06">
-            <img src="/images/logo.png" alt="BeingScribe Logo Icon" style={{ height: 20, width: 'auto' }} />
+            <Image
+              src="/images/logo.webp"
+              alt="BeingScribe Logo Icon"
+              width={35}
+              height={20}
+              style={{ height: 20, width: 'auto' }}
+            />
             <span>Behind the Scroll</span>
           </div>
 

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Services() {
   return (
     <section className="services" id="services">
@@ -6,7 +8,13 @@ export default function Services() {
           
           {/* Left Side: Arched Muse Portrait */}
           <div className="services-visual-arch reveal">
-            <img src="/images/muse_portrait.png" alt="BeingScribe Services Muse" />
+            <Image
+              src="/images/muse_portrait.webp"
+              alt="BeingScribe Services Muse"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: 'cover' }}
+            />
           </div>
 
           {/* Right Side: List of Services */}

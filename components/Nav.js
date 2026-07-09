@@ -1,9 +1,11 @@
+import Image from 'next/image';
+
 export default function Nav() {
   return (
     <nav className="nav">
       <div className="nav-container">
         <a href="#" className="logo brand-logo-img">
-          <img src="/images/logo.png?v=2" alt="Being Scribe Logo" className="logo-img" />
+          <Image src="/images/logo.webp" alt="Being Scribe Logo" width={67} height={38} className="logo-img" priority />
         </a>
 
         <div className="nav-links desktop-nav">

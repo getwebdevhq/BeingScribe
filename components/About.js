@@ -1,10 +1,18 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
     <section className="about" id="about" style={{ padding: 'var(--section-py) 0' }}>
       <div className="section-container split-container reverse">
         {/* Left: Arched Portrait of the Muse */}
         <div className="split-visual reveal">
-          <img src="/images/muse_portrait.png" alt="BeingScribe Creator Muse" />
+          <Image
+            src="/images/muse_portrait.webp"
+            alt="BeingScribe Creator Muse"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ objectFit: 'cover' }}
+          />
         </div>
 
         {/* Right: Copy & Brand Pillars */}
