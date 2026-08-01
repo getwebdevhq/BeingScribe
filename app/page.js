@@ -1,5 +1,5 @@
 import Nav from '@/components/Nav';
-import Hero from '@/components/Hero';
+import { CinematicHero } from '@/components/ui/cinematic-landing-hero';
 import ValueProp from '@/components/ValueProp';
 import Services from '@/components/Services';
 import Results from '@/components/Results';
@@ -8,12 +8,13 @@ import About from '@/components/About';
 import Tips from '@/components/Tips';
 import Footer from '@/components/Footer';
 import SiteInteractions from '@/components/SiteInteractions';
+import BackToTop from '@/components/BackToTop';
 
 export default function Home() {
   return (
     <>
       <Nav />
-      <Hero />
+      <CinematicHero />
       <ValueProp />
       <Services />
       <Results />
@@ -22,6 +23,7 @@ export default function Home() {
       <Tips />
       <Footer />
       <SiteInteractions />
+      <BackToTop />
     </>
   );
 }

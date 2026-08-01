@@ -12,17 +12,18 @@ export default function SiteInteractions() {
     // ── Smooth Scroll for Anchor Links ────────────────────────
     const anchors = document.querySelectorAll('a[href^="#"]');
     const handleAnchorClick = function (e) {
-      e.preventDefault();
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      if (!targetId || targetId === '#') return;
 
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        const navHeight = document.querySelector('.nav').offsetHeight;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+        e.preventDefault();
+        const navEl = document.querySelector('.nav');
+        const navHeight = navEl ? navEl.offsetHeight + 30 : 90;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navHeight;
 
         window.scrollTo({
-          top: targetPosition,
+          top: Math.max(0, targetPosition),
           behavior: prefersReducedMotion ? 'auto' : 'smooth',
         });
       }
@@ -116,6 +117,16 @@ export default function SiteInteractions() {
     if (!prefersReducedMotion) {
       const elementsToReveal = document.querySelectorAll('.reveal');
 
+      const revealCheck = () => {
+        elementsToReveal.forEach((el) => {
+          if (el.classList.contains('is-visible')) return;
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight + 150 && rect.bottom > -150) {
+            el.classList.add('is-visible');
+          }
+        });
+      };
+
       revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -126,39 +137,27 @@ export default function SiteInteractions() {
           });
         },
         {
-          threshold: 0.08,
-          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.01,
+          rootMargin: '150px 0px 150px 0px',
         }
       );
 
-      elementsToReveal.forEach((el) => revealObserver.observe(el));
-    }
-    cleanupFns.push(() => revealObserver && revealObserver.disconnect());
+      elementsToReveal.forEach((el) => {
+        revealObserver.observe(el);
+      });
 
-    // ── Mobile Menu Toggle ────────────────────────────────────
-    const hamburger = document.querySelector('.hamburger');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-menu .btn');
+      // Immediate check and delayed checks for hydration
+      revealCheck();
+      const t1 = setTimeout(revealCheck, 100);
+      const t2 = setTimeout(revealCheck, 400);
 
-    const handleHamburgerClick = () => {
-      const isActive = hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      document.body.style.overflow = isActive ? 'hidden' : '';
-    };
-
-    const handleMobileLinkClick = () => {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', handleHamburgerClick);
-      mobileLinks.forEach((link) => link.addEventListener('click', handleMobileLinkClick));
+      window.addEventListener('scroll', revealCheck, { passive: true });
 
       cleanupFns.push(() => {
-        hamburger.removeEventListener('click', handleHamburgerClick);
-        mobileLinks.forEach((link) => link.removeEventListener('click', handleMobileLinkClick));
+        clearTimeout(t1);
+        clearTimeout(t2);
+        window.removeEventListener('scroll', revealCheck);
+        revealObserver && revealObserver.disconnect();
       });
     }
 

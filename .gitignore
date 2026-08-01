@@ -25,3 +25,9 @@ yarn-error.log*
 
 # claude
 .claude
+
+# freebuff desktop app cache
+.freebuff/
+
+# typescript
+*.tsbuildinfo
