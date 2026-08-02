@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { WHATSAPP_LINK } from '@/lib/utils';
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +73,7 @@ export default function Nav() {
           </div>
 
           <div className="nav-actions">
-            <a href="#contact" className="btn btn-black magnetic desktop-btn">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-black magnetic desktop-btn">
               Book A Call
             </a>
             <button
@@ -107,7 +108,7 @@ export default function Nav() {
         <a href="#contact" className="mobile-link" onClick={closeMenu}>
           Contact
         </a>
-        <a href="#contact" className="btn btn-pink" onClick={closeMenu}>
+        <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-pink" onClick={closeMenu}>
           Book A Call
         </a>
       </div>

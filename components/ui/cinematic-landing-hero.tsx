@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { cn } from "@/lib/utils";
+import { cn, WHATSAPP_LINK } from "@/lib/utils";
 import { Calendar, Sparkles, TrendingUp, ArrowUpRight } from "lucide-react";
 
 const INJECTED_STYLES = `
@@ -320,7 +320,9 @@ export function CinematicHero({
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
           <a
-            href="#contact"
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Book A Call"
             className="btn-modern-light flex items-center justify-center gap-3.5 px-7 py-3.5 rounded-full group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0a546c]/40"
           >

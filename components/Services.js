@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { WHATSAPP_LINK } from '@/lib/utils';
 
 const TINTS = [
   { bg: 'bg-[#fcaea4]/[0.09]', border: 'border-[#fcaea4]/25', hoverBorder: 'hover:border-[#fcaea4]/60', chip: 'bg-[#fcaea4]/15 text-[#fcaea4] border-[#fcaea4]/25', glow: 'hover:shadow-[0_28px_56px_-16px_rgba(252,174,164,0.35)]' },
@@ -105,7 +106,7 @@ export default function Services() {
         </div>
 
         <div className="flex justify-center reveal">
-          <a href="#contact" className="btn btn-pink magnetic text-base px-10 py-4 shadow-xl">
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-pink magnetic text-base px-10 py-4 shadow-xl">
             Get a Custom Content Plan ↗
           </a>
         </div>

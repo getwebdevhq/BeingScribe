@@ -1,3 +1,5 @@
+import { WHATSAPP_LINK } from '@/lib/utils';
+
 export default function Tips() {
   const tipsList = [
     {
@@ -78,9 +80,9 @@ export default function Tips() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 reveal">
-          <a href="#contact" className="btn btn-black">Growth Strategy ↗</a>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-black">Growth Strategy ↗</a>
           <a href="#work" className="btn btn-outline">Featured Projects ↗</a>
-          <a href="#contact" className="btn btn-pink">Book A Consultation ↗</a>
+          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-pink">Book A Consultation ↗</a>
         </div>
       </div>
     </section>

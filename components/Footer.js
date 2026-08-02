@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { WHATSAPP_LINK } from '@/lib/utils';
 
 export default function Footer() {
   return (
@@ -22,7 +23,7 @@ export default function Footer() {
             <p className="text-white/70 text-base md:text-lg font-light leading-relaxed max-w-2xl mb-10">
               Because we are thinkers, strategists, and creators; not just people who schedule posts. Let&rsquo;s build something impossible to ignore.
             </p>
-            <a href="mailto:hello@beingscribe.com" className="btn btn-pink text-base px-10 py-4 shadow-xl">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-pink text-base px-10 py-4 shadow-xl">
               Book A Call ↗
             </a>
           </div>
@@ -35,15 +36,15 @@ export default function Footer() {
               </h4>
               <ul className="space-y-4 text-base font-light">
                 {[
-                  { name: 'Instagram', href: '#' },
-                  { name: 'Threads', href: '#' },
-                  { name: 'LinkedIn', href: '#' },
-                  { name: 'WhatsApp', href: '#' },
-                  { name: 'Email Us', href: 'mailto:hello@beingscribe.com' },
+                  { name: 'Instagram', href: 'https://instagram.com/beingscribe' },
+                  { name: 'WhatsApp', href: WHATSAPP_LINK },
+                  { name: 'Email Us', href: 'mailto:beingscribe@gmail.com' },
                 ].map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-white/80 hover:text-[#fcaea4] hover:translate-x-1 transition-all inline-block py-1"
                     >
                       {link.name} <span className="text-xs opacity-50">↗</span>
