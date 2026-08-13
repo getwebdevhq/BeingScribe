@@ -1,6 +1,5 @@
 import Nav from '@/components/Nav';
 import { CinematicHero } from '@/components/ui/cinematic-landing-hero';
-import ValueProp from '@/components/ValueProp';
 import Services from '@/components/Services';
 import Results from '@/components/Results';
 import Marquee from '@/components/Marquee';
@@ -16,7 +15,6 @@ export default function Home() {
     <>
       <Nav />
       <CinematicHero />
-      <ValueProp />
       <Services />
       <Results />
       <Marquee />

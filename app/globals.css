@@ -460,7 +460,12 @@ h1, h2, h3, h4, .font-serif {
 /* ── Portfolio Section (Modern Showcase Layout) ───────────── */
 .portfolio {
     padding: var(--section-py) 0;
-    background-color: var(--white);
+    background-color: #05222b !important;
+    color: #ffffff !important;
+}
+
+.portfolio .section-title {
+    color: #ffffff !important;
 }
 
 /* ── About Section (Revised with Muse / Team Details) ──────── */

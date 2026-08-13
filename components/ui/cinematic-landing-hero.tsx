@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { cn, WHATSAPP_LINK } from "@/lib/utils";
+import { cn, WHATSAPP_LINK, PORTFOLIO_DRIVE_LINK } from "@/lib/utils";
 import { Calendar, Sparkles, TrendingUp, ArrowUpRight } from "lucide-react";
 
 const INJECTED_STYLES = `
@@ -336,7 +336,9 @@ export function CinematicHero({
           </a>
 
           <a
-            href="#work"
+            href={PORTFOLIO_DRIVE_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="View Our Work"
             className="btn-modern-dark flex items-center justify-center gap-3.5 px-7 py-3.5 rounded-full group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#fcaea4]/40"
           >
@@ -362,9 +364,9 @@ export function CinematicHero({
           {/* DYNAMIC RESPONSIVE GRID: Flex-col on mobile to force order, Grid on desktop */}
           <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">
             
-            {/* 1. TOP (Mobile) / RIGHT (Desktop): BRAND NAME */}
-            <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
-              <h2 className="text-5xl md:text-[5rem] lg:text-[6rem] xl:text-[7rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0">
+            {/* 1. TOP (Mobile) / RIGHT (Desktop): BRAND NAME WATERMARK */}
+            <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full select-none pointer-events-none">
+              <h2 className="text-5xl md:text-[5rem] lg:text-[6rem] xl:text-[7rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0 opacity-90">
                 {brandName}
               </h2>
             </div>
@@ -405,14 +407,16 @@ export function CinematicHero({
                         <div className="w-9 h-9 rounded-full bg-[#fcaea4]/30 text-[#0a546c] flex items-center justify-center font-bold text-sm border border-white/60 shadow-[0_4px_12px_rgba(5,34,43,0.12)]">BS</div>
                       </div>
 
-                      <div className="phone-widget relative w-40 h-40 mx-auto flex items-center justify-center mb-7 rounded-full bg-white/70 shadow-[0_12px_28px_-8px_rgba(10,84,108,0.22)] border border-white">
+                      <div className="phone-widget relative w-40 h-40 mx-auto flex items-center justify-center mb-7 rounded-full bg-white/80 shadow-[0_12px_28px_-8px_rgba(10,84,108,0.22)] border border-white">
                         <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
-                          <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(10,84,108,0.1)" strokeWidth="11" />
+                          <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(10,84,108,0.12)" strokeWidth="11" />
                           <circle className="progress-ring" cx="80" cy="80" r="60" fill="none" stroke="#0a546c" strokeWidth="11" />
                         </svg>
                         <div className="text-center z-10 flex flex-col items-center">
-                          <span className="counter-val text-3xl font-extrabold tracking-tighter text-[#05222b]">0</span>
-                          <span className="text-[9px] text-[#0a546c]/80 uppercase tracking-[0.05em] font-bold mt-0.5 whitespace-nowrap">{metricLabel}</span>
+                          <span className="counter-val text-4xl font-extrabold tracking-tighter text-[#05222b]">0</span>
+                          <span className="text-[11px] text-[#05222b] font-extrabold uppercase tracking-[0.06em] mt-0.5 whitespace-nowrap drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">
+                            {metricLabel}
+                          </span>
                         </div>
                       </div>
 
@@ -443,7 +447,7 @@ export function CinematicHero({
                 </div>
 
                 {/* Floating Glass Badges */}
-                <div className="floating-badge absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30">
+                <div className="floating-badge absolute flex -top-4 lg:-top-6 -left-10 lg:-left-28 floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-40">
                   <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-b from-[#fcaea4]/20 to-[#fcaea4]/5 flex items-center justify-center border border-[#fcaea4]/30 shadow-inner">
                     <span className="text-base lg:text-xl drop-shadow-lg" aria-hidden="true">🔥</span>
                   </div>
@@ -453,13 +457,13 @@ export function CinematicHero({
                   </div>
                 </div>
 
-                <div className="floating-badge absolute flex bottom-12 lg:bottom-20 right-[-15px] lg:right-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30">
+                <div className="floating-badge absolute flex bottom-2 lg:bottom-6 -right-10 lg:-right-28 floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-40">
                   <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-b from-teal-500/20 to-teal-900/10 flex items-center justify-center border border-teal-400/30 shadow-inner">
                     <span className="text-base lg:text-lg drop-shadow-lg" aria-hidden="true">📈</span>
                   </div>
                   <div className="text-left">
                     <p className="text-white text-xs lg:text-sm font-bold tracking-tight">Brand Strategy</p>
-                    <p className="text-teal-200/50 text-[10px] lg:text-xs font-medium">Positioned & Scaling</p>
+                    <p className="text-teal-200/50 text-[10px] lg:text-xs font-medium">Positioned &amp; Scaling</p>
                   </div>
                 </div>
 

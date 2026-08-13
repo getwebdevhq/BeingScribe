@@ -55,10 +55,7 @@ export default function Services() {
       <div className="section-container relative z-10">
         <div className="max-w-3xl mb-16 text-center md:text-left reveal">
           <span className="text-xs uppercase tracking-[0.25em] text-[#fcaea4] font-semibold mb-3 block">What We Deliver</span>
-          <h2 className="section-title text-white mb-4">Our Core Capabilities</h2>
-          <p className="text-white/70 text-lg font-light leading-relaxed">
-            We focus on the things that actually shape a brand&rsquo;s presence online. No fluff, just measurable creative results.
-          </p>
+          <h2 className="section-title text-white mb-4">Our Core Services</h2>
         </div>
 
         {/* Bento Grid Layout */}
