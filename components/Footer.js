@@ -1,4 +1,4 @@
-import { WHATSAPP_LINK, PORTFOLIO_DRIVE_LINK } from '@/lib/utils';
+import { WHATSAPP_LINK, PORTFOLIO_DRIVE_LINK, EMAIL_LINK, EMAIL_ADDRESS } from '@/lib/utils';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
@@ -88,7 +88,7 @@ export default function Footer() {
                 {/* Email */}
                 <li>
                   <a
-                    href="mailto:beingscribe@gmail.com"
+                    href={EMAIL_LINK}
                     className="flex items-center gap-3.5 text-white/90 hover:text-[#fcaea4] hover:translate-x-1 transition-all group py-2 px-3 rounded-xl hover:bg-white/5"
                   >
                     <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-[#fcaea4] group-hover:bg-[#fcaea4] group-hover:text-[#05222b] transition-colors flex-shrink-0">
@@ -96,7 +96,7 @@ export default function Footer() {
                         <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
                       </svg>
                     </div>
-                    <span className="font-semibold text-base">beingscribe@gmail.com</span>
+                    <span className="font-semibold text-base">{EMAIL_ADDRESS}</span>
                     <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity ml-auto" />
                   </a>
                 </li>
